@@ -1,0 +1,15 @@
+# temporary files
+*.swp
+
+# restored by npm install
+node_modules/
+
+# restored by jspm install
+jspm_packages/
+
+# created by tsc
+!src/systemjs-angular-loader.js
+!src/systemjs.config.js
+src/**/*.js
+src/**/*.js.map
+
