@@ -1,5 +1,5 @@
 module.exports = {
-  browser: "firefox",
+  // browser: "firefox",
   server: {
     baseDir: "src",
     "routes": {

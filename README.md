@@ -1,6 +1,16 @@
 # Angular v4 examples
 begin with : [jspm-angular4-seed](https://github.com/thatseeyou/jspm-angular4-seed)
 
+## Install & Run
+```
+$ git clone git@github.com:thatseeyou/angular-examples.git
+$ cd angular-examples
+$ npm install
+$ jspm install
+$ npm run build:watch
+$ npm run serve
+```
+
 # List
 
 ## 1. Hello World
