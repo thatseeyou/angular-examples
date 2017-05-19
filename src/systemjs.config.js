@@ -8,7 +8,15 @@ System.config({
   },
 
   packages: {
-    "app": {
+    "src-hello/app": {
+      "defaultExtension": "js",
+      "meta": {
+        "./*.js": {
+          "loader": "systemjs-angular-loader.js"
+        }
+      }
+    },
+    "src-toh/app": {
       "defaultExtension": "js",
       "meta": {
         "./*.js": {
@@ -27,6 +35,7 @@ System.config({
     "@angular/platform-browser": "npm:@angular/platform-browser@4.1.2",
     "@angular/platform-browser-dynamic": "npm:@angular/platform-browser-dynamic@4.1.2",
     "@angular/router": "npm:@angular/router@4.1.2",
+    "angular-in-memory-web-api": "npm:angular-in-memory-web-api@0.3.2",
     "core-js": "npm:core-js@2.4.1",
     "rxjs": "npm:rxjs@5.4.0",
     "zone.js": "npm:zone.js@0.8.10",
@@ -107,6 +116,9 @@ System.config({
       "@angular/platform-browser": "npm:@angular/platform-browser@4.1.2",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "rxjs": "npm:rxjs@5.4.0"
+    },
+    "npm:angular-in-memory-web-api@0.3.2": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:asn1.js@4.9.1": {
       "bn.js": "npm:bn.js@4.11.6",

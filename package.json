@@ -35,10 +35,16 @@
       "@angular/platform-browser": "npm:@angular/platform-browser@^4.1.2",
       "@angular/platform-browser-dynamic": "npm:@angular/platform-browser-dynamic@^4.1.2",
       "@angular/router": "npm:@angular/router@^4.1.2",
+      "angular-in-memory-web-api": "npm:angular-in-memory-web-api@^0.3.2",
       "core-js": "npm:core-js@^2.4.1",
       "rxjs": "npm:rxjs@^5.4.0",
       "zone.js": "npm:zone.js@^0.8.10"
     },
-    "devDependencies": {}
+    "devDependencies": {},
+    "overrides": {
+      "npm:angular-in-memory-web-api@0.3.2": {
+        "peerDependencies": []
+      }
+    }
   }
 }

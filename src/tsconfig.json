@@ -46,6 +46,7 @@
 			"zone.js/*": ["jspm_packages/npm/zone.js@0.8.10/*"],
 			"zone.js/dist/zone": ["jspm_packages/npm/zone.js@0.7.7/dist/zone.js.d.ts"],
 			"@angular/*": ["jspm_packages/npm/@angular/*@4.1.2"],
+      "angular-in-memory-web-api": ["jspm_packages/npm/angular-in-memory-web-api@0.3.2"],
       "*": [
         "node_modules/@types/*",
         "types/*"

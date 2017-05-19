@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hello Angular</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="jspm_packages/system.js"></script>
+    <script src="systemjs.config.js"></script>
+    <script src="src-hello/app/build.js"></script>
+    <script>
+        System.import('src-hello/main.js').catch(function (err) { console.error(err); });
+    </script>
+</head>
+
+<body>
+    <app-root>Loading...</app-root>
+</body>
+</html>
