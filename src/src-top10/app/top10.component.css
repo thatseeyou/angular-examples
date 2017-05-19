@@ -1,0 +1,94 @@
+/*인기기사 순위*/
+.news_9 {
+    padding: 0 12px 0 12px;
+    height: 395px;
+    background: url("../img/right_border.gif") repeat-x 0 bottom;
+}
+
+.news_9 .news_tit_1 {
+    padding-bottom: 10px;
+}
+
+.news_9 ol {
+    border-top: 1px solid #d3d3d3;
+    border-bottom: 1px solid #d3d3d3;
+}
+
+.news_9 ol li {
+    margin: 0 4px;
+    background-color: #fff;
+    border-left: 1px solid #d3d3d3;
+    border-right: 1px solid #d3d3d3;
+}
+
+.news_9 ol li div {
+    background: url("../img/news_4_line.gif") repeat-x 0 bottom;
+}
+
+.news_9 ol li.last div {
+    background: none; /*border-bottom:1px solid #d3d3d3;*/
+}
+
+.news_9 ol li .number {
+    padding: 6px 0 7px;
+    width: 40px;
+    display: inline-block;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    color: #444;
+}
+
+.news_9 ol li a {
+    padding: 5px 0 6px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.news_9 ol li a img {
+    float: left;
+    display: none;
+}
+
+.news_9 ol li a span {
+    float: left;
+    width: 240px;
+    height: 20px;
+    overflow: hidden;
+    display: block;
+    font-family: "맑은 고딕", 'Malgun Gothic';
+}
+
+.news_9 ol li.news_9_on {
+    margin: 0;
+    padding: 5px 0;
+    background-color: #e6770c;
+}
+
+.news_9 ol li.news_9_on div {
+    background: none;
+}
+
+.news_9 ol li.news_9_on a img {
+    float: left;
+    margin-right: 10px;
+    width: 50px;
+    display: block;
+}
+
+.news_9 ol li.news_9_on a span {
+    float: left;
+    width: 155px;
+    height: 38px;
+    overflow: hidden;
+    display: block;
+    color: #fff;
+    text-decoration: underline;
+}
+
+.news_9 ol li.news_9_on .number {
+    padding-top: 16px;
+    font-size: 25px;
+    color: #fff;
+}

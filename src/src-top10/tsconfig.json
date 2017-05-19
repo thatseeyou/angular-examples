@@ -1,0 +1,41 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "noImplicitAny": true,
+        "sourceMap": true,
+		"lib": [
+			"es2016",
+			"dom"
+		],
+
+        // related to Angular2
+        "experimentalDecorators": true, 
+        "emitDecoratorMetadata": true,  
+
+        // related to /// <reference types="..." />
+        "typeRoots": [
+            "../types",
+            "../node_modules/@types"
+        ],
+        "types": ["node"],   
+
+        // related to import MODULE
+        "baseUrl": "..",
+        "paths": {
+			"rxjs" : ["jspm_packages/npm/rxjs@5.2.0"],
+			"rxjs/*" : ["jspm_packages/npm/rxjs@5.2.0/*"],
+			"core-js": ["jspm_packages/npm/core-js@2.4.1"],
+			"core-js/*": ["jspm_packages/npm/core-js@2.4.1/*"],
+			"zone.js": ["jspm_packages/npm/zone.js@0.7.7"],
+			"zone.js/*": ["jspm_packages/npm/zone.js@0.7.7/*"],
+			"zone.js/dist/zone": ["jspm_packages/npm/zone.js@0.7.7/dist/zone.js.d.ts"],
+			"@angular/*": ["jspm_packages/npm/@angular/*@2.4.8"],
+			"@angular/router": ["jspm_packages/npm/@angular/router@3.4.8"],
+            "*": [
+                "types/*",   // custom declarations
+                "node_modules/@types/*"
+            ]
+        }
+    }
+}

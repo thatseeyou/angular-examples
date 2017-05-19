@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <base href="/top10">
+    <title>Top10</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="src-top10/reset.css">
+    <script src="jspm_packages/system.js"></script>
+    <script src="systemjs.config.js"></script>
+    <script src="src-top10/app/build.js"></script>
+    <script>
+        System.import('src-top10/main.js').catch(function (err) { console.error(err); });
+    </script>
+</head>
+
+<body>
+    <app-root>Loading...</app-root>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<div class="news_9" style="height:405px;">
+    <h3 class="news_tit_1">인기기사 순위</h3>
+    <ol>
+        <li *ngFor="let item of news" (mouseover)="over(item)" [ngClass]="{'news_9_on': item.number == overNumber }">
+            <div>
+                <span class="number">{{item.number}}</span>
+                <a href="{{item.href}}">
+                    <img src="{{item.img}}" width="50" height="40">
+                    <span>{{item.desc}}</span>
+                </a>
+            </div>
+        </li>
+    </ol>
+</div>

@@ -1,0 +1,278 @@
+@charset "utf-8";
+
+/*reset*/
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset,
+legend, textarea, p, blockquote, th, td, input, select, textarea, button {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #000;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+img {
+    border: 0px;
+}
+
+img, a, label, span {
+    vertical-align: top;
+}
+
+li {
+    list-style: none;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+address, caption, cite, code, dfn, em, var, h1, h2, h3, h4, h5, h6 {
+    font-style: normal;
+    font-weight: normal;
+}
+
+/*웹접근성 관련 태그 reset*/
+caption, legend, caption * , legend * {
+    position: absolute;
+    left: -10000px;
+    line-height: 0;
+    font-size: 0;
+}
+
+fieldset {
+    border: solid 0px black;
+    padding: 0;
+}
+
+body, a, [type=text], [type=password], [type=file], [type=email],
+select, h1, h2, h3, h4, h5, h6, pre, textarea {
+    font-family: "돋움", "맑은 고딕", "tahoma", "sans-serif";
+    font-size: 12px;
+    line-height: 1.5em;
+    color: #222;
+}
+
+/*input type별 reset*/
+[type=text], [type=password], [type=file], [type=email] {
+    vertical-align: middle;
+    border: solid 1px #ccc;
+    background: white;
+    height: 25px;
+    line-height: 25px;
+}
+
+[type=file] {
+    padding-left: 0;
+}
+
+[type=checkbox], [type=radio] {
+    vertical-align: middle;
+    margin: 2px 4px 4px 4px;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    [type=checkbox], [type=radio]
+    {
+        margin-top: 5px;
+    }
+}
+
+select {
+    vertical-align: middle;
+    border: solid 1px #ccc;
+}
+
+textarea {
+    box-sizing: border-box;
+    border: solid 1px #ccc;
+}
+
+/*float 해제*/
+* html .clfx {
+    height: 1%;
+    overflow: visible;
+}
+
+/* IE6 float 해제*/
+* + html .clfx {
+    min-height: 1%;
+}
+
+/* IE7 float 해제 */
+.clfx:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    font-size: 0;
+}
+
+.hid {
+    display: none;
+}
+
+/*margin*/
+.mr_0 {
+    margin-right: 0px !important;
+}
+
+.mr_10 {
+    margin-right: 10px !important;
+}
+
+.mr_15 {
+    margin-right: 15px !important;
+}
+
+.mr_20 {
+    margin-right: 20px !important;
+}
+
+.mr_60 {
+    margin-right: 60px !important;
+}
+
+.ml_0 {
+    margin-left: 0px !important;
+}
+
+.ml_10 {
+    margin-left: 10px !important;
+}
+
+.ml_15 {
+    margin-left: 15px !important;
+}
+
+.mb_10 {
+    margin-bottom: 10px !important;
+}
+
+.mb_12 {
+    margin-bottom: 12px !important;
+}
+
+.mb_20 {
+    margin-bottom: 20px !important;
+}
+
+.mb_25 {
+    margin-bottom: 25px !important;
+}
+
+.mb_35 {
+    margin-bottom: 35px !important;
+}
+
+.mb_45 {
+    margin-bottom: 45px !important;
+}
+
+.mt_10 {
+    margin-top: 10px !important;
+}
+
+.mt_20 {
+    margin-top: 20px !important;
+}
+
+.mt_25 {
+    margin-top: 25px !important;
+}
+
+.mt_30 {
+    margin-top: 30px !important;
+}
+
+.mt_35 {
+    margin-top: 35px !important;
+}
+
+.mt_50 {
+    margin-top: 50px !important;
+}
+
+.mt_70 {
+    margin-top: 70px !important;
+}
+
+/*padding*/
+.pb_0 {
+    padding-bottom: 0px !important;
+}
+
+.pb_5 {
+    padding-bottom: 5px !important;
+}
+
+.pb_25 {
+    padding-bottom: 25px !important;
+}
+
+.pt_0 {
+    padding-top: 0px !important;
+}
+
+.pt_8 {
+    padding-top: 8px !important;
+}
+
+.pt_18 {
+    padding-top: 18px !important;
+}
+
+.pt_10 {
+    padding-top: 10px !important;
+}
+
+.pt_15 {
+    padding-top: 15px !important;
+}
+
+.pt_20 {
+    padding-top: 20px !important;
+}
+
+/*text-align*/
+.txt_r {
+    text-align: right !important;
+}
+
+.txt_l {
+    text-align: left !important;
+}
+
+.txt_c {
+    text-align: center !important;
+}
+
+/*background*/
+.back_no {
+    background: none !important;
+}
+
+
