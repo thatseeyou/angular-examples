@@ -1,8 +1,9 @@
 {
-	"server": {
-		"baseDir": "src",
-		"routes": {
-			"/jspm_packages": "jspm_packages"
-		}
-	}
+  "browser": "firefox",
+  "server": {
+    "baseDir": "src",
+    "routes": {
+      "/jspm_packages": "jspm_packages"
+    }
+  }
 }

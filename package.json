@@ -9,7 +9,7 @@
     "build:watch": "tsc -p src && tsc -p src --watch",
     "build:trace": "tsc -p src --traceResolution",
     "build:debug": "tsc -p src --listFiles --listEmittedFiles",
-    "serve": "lite-server"
+    "serve": "lite-server -c bs-config.js"
   },
   "keywords": [],
   "author": "",
