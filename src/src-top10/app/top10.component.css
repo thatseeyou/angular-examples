@@ -2,7 +2,7 @@
 .news_9 {
     padding: 0 12px 0 12px;
     height: 395px;
-    background: url("../img/right_border.gif") repeat-x 0 bottom;
+    background: url("src-top10/img/right_border.gif") repeat-x 0 bottom;
 }
 
 .news_9 .news_tit_1 {
@@ -22,7 +22,7 @@
 }
 
 .news_9 ol li div {
-    background: url("../img/news_4_line.gif") repeat-x 0 bottom;
+    background: url("src-top10/img/news_4_line.gif") repeat-x 0 bottom;
 }
 
 .news_9 ol li.last div {
