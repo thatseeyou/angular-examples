@@ -8,8 +8,8 @@ node_modules/
 jspm_packages/
 
 # created by tsc
-!src/systemjs-angular-loader.js
-!src/systemjs.config.js
 src/**/*.js
 src/**/*.js.map
+!src/systemjs-angular-loader.js
+!src/systemjs.config.js
 
