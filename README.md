@@ -17,6 +17,8 @@ $ npm run serve
 
 ## 2. Tour of Heroes
 
+## 3. Template syntax from Angualar official guide
+
 ## 3. Top10 News
 
 ### app-routing.module.ts
