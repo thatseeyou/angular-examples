@@ -11,7 +11,7 @@ import { HeroService }         from './hero.service';
 })
 export class HeroesComponent implements OnInit {
   heroes: Hero[];
-  selectedHero: Hero;
+  selectedHero: Hero | null;
 
   constructor(
     private heroService: HeroService,
@@ -51,6 +51,8 @@ export class HeroesComponent implements OnInit {
   }
 
   gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedHero.id]);
+    if (this.selectedHero) {
+      this.router.navigate(['/detail', this.selectedHero.id]);
+    }
   }
 }

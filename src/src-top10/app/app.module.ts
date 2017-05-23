@@ -7,14 +7,14 @@ import { AppComponent }   from './app.component';
 import { Top10Component } from './top10.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    Top10Component
-  ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
+  ],
+  declarations: [
+    AppComponent,
+    Top10Component
   ],
   providers: [],
   bootstrap: [AppComponent]

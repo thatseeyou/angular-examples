@@ -15,7 +15,9 @@ module.exports = {
         rewrites: [
           { from: /\/hello.*/, to: '/hello.html' },
           { from: /\/toh.*/, to: '/toh.html' },
-          { from: /\/top10.*/, to: '/top10.html' }
+          { from: /\/top10.*/, to: '/top10.html' },
+          { from: /\/template-syntax.*/, to: '/template-syntax.html' },
+          { from: /\/calculator.*/, to: '/calculator.html' }
         ],
         verbose: false
       })
