@@ -17,6 +17,8 @@ module.exports = {
           { from: /\/toh.*/, to: '/toh.html' },
           { from: /\/top10.*/, to: '/top10.html' },
           { from: /\/template-syntax.*/, to: '/template-syntax.html' },
+          { from: /\/router.*/, to: '/router.html' },
+          { from: /\/playground.*/, to: '/playground.html' },
           { from: /\/calculator.*/, to: '/calculator.html' }
         ],
         verbose: false

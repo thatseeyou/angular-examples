@@ -38,15 +38,17 @@
     // "moduleResolution": "node",            /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
     "baseUrl": "../",                         /* Base directory to resolve non-absolute module names. */
     "paths": {
-      "rxjs" : ["jspm_packages/npm/rxjs@5.4.0"],
-			"rxjs/*" : ["jspm_packages/npm/rxjs@5.4.0/*"],
-			"core-js": ["jspm_packages/npm/core-js@2.4.1"],
-			"core-js/*": ["jspm_packages/npm/core-js@2.4.1/*"],
-			"zone.js": ["jspm_packages/npm/zone.js@0.8.10"],
-			"zone.js/*": ["jspm_packages/npm/zone.js@0.8.10/*"],
-			"zone.js/dist/zone": ["jspm_packages/npm/zone.js@0.7.7/dist/zone.js.d.ts"],
-			"@angular/*": ["jspm_packages/npm/@angular/*@4.1.2"],
-      "angular-in-memory-web-api": ["jspm_packages/npm/angular-in-memory-web-api@0.3.2"],
+      "rxjs" :                      ["jspm_packages/npm/rxjs@5.4.0"],
+      "rxjs/*" :                    ["jspm_packages/npm/rxjs@5.4.0/*"],
+      "core-js":                    ["jspm_packages/npm/core-js@2.4.1"],
+      "core-js/*":                  ["jspm_packages/npm/core-js@2.4.1/*"],
+      "zone.js":                    ["jspm_packages/npm/zone.js@0.8.11"],
+      "zone.js/*":                  ["jspm_packages/npm/zone.js@0.8.11/*"],
+      "zone.js/dist/zone":          ["jspm_packages/npm/zone.js@0.8.11/dist/zone.js.d.ts"],
+      "@angular/platform-browser/*":["jspm_packages/npm/@angular/platform-browser@4.1.3/*"],
+      "@angular/animations/*":      ["jspm_packages/npm/@angular/animations@4.1.3/*"],
+      "@angular/*":                 ["jspm_packages/npm/@angular/*@4.1.3"],
+      "angular-in-memory-web-api":  ["jspm_packages/npm/angular-in-memory-web-api@0.3.2"],
       "*": [
         "node_modules/@types/*",
         "types/*"
