@@ -2,6 +2,7 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ComposeMessageComponent }  from './compose-message.component';
+import { CommentComponent }  from './comment.component';
 import { PageNotFoundComponent }    from './not-found.component';
 
 import { CanDeactivateGuard }       from './can-deactivate-guard.service';
@@ -10,8 +11,23 @@ import { SelectivePreloadingStrategy } from './selective-preloading-strategy';
 
 const appRoutes: Routes = [
   {
+    path: 'compose/:message',
+    component: ComposeMessageComponent,
+    outlet: 'popup'
+  },
+  {
     path: 'compose',
     component: ComposeMessageComponent,
+    outlet: 'popup'
+  },
+  {
+    path: 'comment/:text',
+    component: CommentComponent,
+    outlet: 'aux'
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
     outlet: 'popup'
   },
   {

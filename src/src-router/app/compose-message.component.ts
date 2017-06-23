@@ -1,5 +1,5 @@
-import { Component, HostBinding } from '@angular/core';
-import { Router }                 from '@angular/router';
+import { Component, HostBinding, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { slideInDownAnimation }   from './animations';
 
@@ -8,15 +8,23 @@ import { slideInDownAnimation }   from './animations';
   styles: [ ':host { position: relative; bottom: 10%; }' ],
   animations: [ slideInDownAnimation ]
 })
-export class ComposeMessageComponent {
+export class ComposeMessageComponent implements OnInit {
   @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display')   display = 'block';
   @HostBinding('style.position')  position = 'absolute';
 
+  message: string;
   details: string;
   sending: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    this.route.params
+      .subscribe(params => {
+        this.message = params.message;
+      })
+  }
 
   send() {
     this.sending = true;
