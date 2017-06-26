@@ -40,7 +40,15 @@ System.config({
         }
       }
     },
-    "src-multipleroutes/app": {
+    "src-multipleroutes0/app": {
+      "defaultExtension": "js",
+      "meta": {
+        "./*.js": {
+          "loader": "systemjs-angular-loader.js"
+        }
+      }
+    },
+    "src-multipleroutes1/app": {
       "defaultExtension": "js",
       "meta": {
         "./*.js": {
@@ -90,6 +98,7 @@ System.config({
     "angular-in-memory-web-api": "npm:angular-in-memory-web-api@0.3.2",
     "core-js": "npm:core-js@2.4.1",
     "rxjs": "npm:rxjs@5.4.0",
+    "showdown": "github:showdownjs/showdown@1.7.1",
     "zone.js": "npm:zone.js@0.8.11",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"

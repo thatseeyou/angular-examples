@@ -1,0 +1,13 @@
+h2 {
+    color: white;
+}
+div {
+    background-color: #80B562;
+    padding: 0 10px;
+}
+
+p {
+    text-indent: 1em;
+    text-align: justify;
+    margin-left: 4px;
+}
