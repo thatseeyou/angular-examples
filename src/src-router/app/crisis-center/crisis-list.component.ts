@@ -28,7 +28,7 @@ export class CrisisListComponent implements OnInit {
     private service: CrisisService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) { }
 
   isSelected(crisis: Crisis) {
     return crisis.id === this.selectedId;

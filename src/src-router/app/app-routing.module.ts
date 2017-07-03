@@ -41,7 +41,6 @@ const appRoutes: Routes = [
     data: { preload: true }
   },
   { path: '',   redirectTo: '/heroes', pathMatch: 'full' },
-  { path: '.html',   redirectTo: '/heroes', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 
