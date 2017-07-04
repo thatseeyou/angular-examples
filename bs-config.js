@@ -1,5 +1,5 @@
 module.exports = {
-  // browser: "firefox",
+  browser: "firefox",
   server: {
     baseDir: "src",
     "routes": {
@@ -21,7 +21,8 @@ module.exports = {
           { from: /\/playground.*/, to: '/playground.html' },
           { from: /\/calculator.*/, to: '/calculator.html' },
           { from: /\/multipleroutes0.*/, to: '/multipleroutes0.html' },
-          { from: /\/multipleroutes1.*/, to: '/multipleroutes1.html' }
+          { from: /\/multipleroutes1.*/, to: '/multipleroutes1.html' },
+          { from: /\/rainbow.*/, to: '/rainbow.html' }
         ],
         verbose: false
       })

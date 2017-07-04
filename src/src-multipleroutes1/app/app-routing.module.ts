@@ -8,7 +8,7 @@ import { PageNotFoundComponent }    from './not-found.component';
 const appRoutes: Routes = [
   {
     path: '',
-    redirectTo: '/group',
+    redirectTo: '/group/__first__',
     pathMatch: 'full',
   },
   {
