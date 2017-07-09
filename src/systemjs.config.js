@@ -105,7 +105,7 @@ System.config({
     "@angular/router": "npm:@angular/router@4.1.3",
     "angular-in-memory-web-api": "npm:angular-in-memory-web-api@0.3.2",
     "core-js": "npm:core-js@2.4.1",
-    "rxjs": "npm:rxjs@5.4.0",
+    "rxjs": "npm:rxjs@5.4.2",
     "showdown": "github:showdownjs/showdown@1.7.1",
     "zone.js": "npm:zone.js@0.8.11",
     "github:jspm/nodelibs-assert@0.1.0": {
@@ -157,7 +157,7 @@ System.config({
     },
     "npm:@angular/core@4.1.3": {
       "process": "github:jspm/nodelibs-process@0.1.2",
-      "rxjs": "npm:rxjs@5.4.0",
+      "rxjs": "npm:rxjs@5.4.2",
       "zone.js": "npm:zone.js@0.8.11"
     },
     "npm:@angular/forms@4.1.3": {
@@ -169,7 +169,7 @@ System.config({
     "npm:@angular/http@4.1.3": {
       "@angular/core": "npm:@angular/core@4.1.3",
       "@angular/platform-browser": "npm:@angular/platform-browser@4.1.3",
-      "rxjs": "npm:rxjs@5.4.0"
+      "rxjs": "npm:rxjs@5.4.2"
     },
     "npm:@angular/platform-browser-dynamic@4.1.3": {
       "@angular/common": "npm:@angular/common@4.1.3",
@@ -187,7 +187,7 @@ System.config({
       "@angular/core": "npm:@angular/core@4.1.3",
       "@angular/platform-browser": "npm:@angular/platform-browser@4.1.3",
       "process": "github:jspm/nodelibs-process@0.1.2",
-      "rxjs": "npm:rxjs@5.4.0"
+      "rxjs": "npm:rxjs@5.4.2"
     },
     "npm:angular-in-memory-web-api@0.3.2": {
       "process": "github:jspm/nodelibs-process@0.1.2"
@@ -258,7 +258,7 @@ System.config({
       "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
     "npm:buffer@5.0.6": {
-      "base64-js": "npm:base64-js@1.2.0",
+      "base64-js": "npm:base64-js@1.2.1",
       "ieee754": "npm:ieee754@1.1.8"
     },
     "npm:cipher-base@1.0.3": {
@@ -420,7 +420,7 @@ System.config({
       "hash-base": "npm:hash-base@2.0.2",
       "inherits": "npm:inherits@2.0.1"
     },
-    "npm:rxjs@5.4.0": {
+    "npm:rxjs@5.4.2": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.1",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "symbol-observable": "npm:symbol-observable@1.0.4"

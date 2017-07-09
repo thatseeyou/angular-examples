@@ -38,8 +38,8 @@
     // "moduleResolution": "node",            /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
     "baseUrl": "../",                         /* Base directory to resolve non-absolute module names. */
     "paths": {
-      "rxjs" :                      ["jspm_packages/npm/rxjs@5.4.0"],
-      "rxjs/*" :                    ["jspm_packages/npm/rxjs@5.4.0/*"],
+      "rxjs" :                      ["jspm_packages/npm/rxjs@5.4.2"],
+      "rxjs/*" :                    ["jspm_packages/npm/rxjs@5.4.2/*"],
       "core-js":                    ["jspm_packages/npm/core-js@2.4.1"],
       "core-js/*":                  ["jspm_packages/npm/core-js@2.4.1/*"],
       "zone.js":                    ["jspm_packages/npm/zone.js@0.8.11"],
