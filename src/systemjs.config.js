@@ -64,6 +64,14 @@ System.config({
         }
       }
     },
+    "src-rainbow-query/app": {
+      "defaultExtension": "js",
+      "meta": {
+        "./*.js": {
+          "loader": "systemjs-angular-loader.js"
+        }
+      }
+    },
     "src-template-syntax/app": {
       "defaultExtension": "js",
       "meta": {
