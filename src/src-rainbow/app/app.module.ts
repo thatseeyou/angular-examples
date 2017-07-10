@@ -20,7 +20,7 @@ import { PaletteItemComponent } from './palette-item.component';
         AppComponent,
         PaletteItemComponent
     ],
-    providers: [],
+    providers: [/* TODO: Providers g here */],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
