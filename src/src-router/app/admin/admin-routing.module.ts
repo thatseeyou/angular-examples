@@ -6,7 +6,7 @@ import { AdminDashboardComponent }  from './admin-dashboard.component';
 import { ManageCrisesComponent }    from './manage-crises.component';
 import { ManageHeroesComponent }    from './manage-heroes.component';
 
-import { AuthGuard }                from '../auth-guard.service';
+import { AuthGuard, AuthGuardDummy } from '../auth-guard.service';
 
 const adminRoutes: Routes = [
   {
@@ -21,6 +21,14 @@ const adminRoutes: Routes = [
           { path: 'crises', component: ManageCrisesComponent },
           { path: 'heroes', component: ManageHeroesComponent },
           { path: '', component: AdminDashboardComponent }
+        ]
+      },
+      {
+        path: '',
+        canActivateChild: [AuthGuardDummy],
+        children: [
+          { path: 'crises2', component: ManageCrisesComponent },
+          { path: 'heroes2', component: ManageHeroesComponent }
         ]
       }
     ]

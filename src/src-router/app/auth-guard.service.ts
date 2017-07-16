@@ -20,6 +20,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   }
 
   canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    console.log(`> AuthGuard::canActivateChild`);
     return this.canActivate(route, state);
   }
 
@@ -50,3 +51,14 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     return false;
   }
 }
+
+@Injectable()
+export class AuthGuardDummy implements CanActivateChild {
+  constructor(private authService: AuthService, private router: Router) {}
+
+  canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    console.log(`> AuthGuardDummy::canActivateChild`);
+    return true;
+  }
+}
+

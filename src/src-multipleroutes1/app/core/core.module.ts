@@ -3,14 +3,17 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { LoggerService } from './logger.service';
 import { ShowdownService } from './showdown.service';
 import { throwIfAlreadyLoaded } from './module-import-guard';
+import { GuardMonitorService } from './guard-monitor.service';
 
 @NgModule({
     imports: [],
-    exports: [],
+    exports: [
+    ],
     declarations: [],
     providers: [
         LoggerService,
-        ShowdownService
+        ShowdownService,
+        GuardMonitorService
     ],
 })
 export class CoreModule { 

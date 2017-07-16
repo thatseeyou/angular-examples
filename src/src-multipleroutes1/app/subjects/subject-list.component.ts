@@ -34,5 +34,9 @@ export class SubjectListComponent implements OnInit {
           this.router.navigate([this.subjectService.getFirstSubject().path], { relativeTo: this.route.parent });
         }
       });
+    this.route.data
+      .subscribe((data: { resolveAt: string }) => {
+        console.log(`SubjectListComponent consume ${data.resolveAt}`);
+      });
   }
 }

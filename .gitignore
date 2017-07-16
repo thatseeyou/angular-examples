@@ -12,4 +12,3 @@ src/**/*.js
 src/**/*.js.map
 !src/systemjs-angular-loader.js
 !src/systemjs.config.js
-
