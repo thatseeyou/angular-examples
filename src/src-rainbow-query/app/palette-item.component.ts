@@ -25,6 +25,9 @@ export class PaletteItemComponent {
         console.log(`${this.constructor.name}::new`);
     }
 
+    // @Input() color:string = 'black';
+
+    // accessor
     get color():string {
         return this._color;
     }
