@@ -19,7 +19,13 @@ $ npm run serve
 
 ## 3. Template syntax from Angualar official guide
 
-## 3. Top10 News
+## 4. Router from Angualar official guide
+
+## 5. Top10 News
+
+## 6. Multiple level route modules 
+
+## 7. Multiple secondary router outlets
 
 ### app-routing.module.ts
 ```

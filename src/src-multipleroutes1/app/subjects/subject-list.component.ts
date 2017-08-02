@@ -24,7 +24,9 @@ export class SubjectListComponent implements OnInit {
     private subjectService:SubjectService,
     private route:ActivatedRoute,
     private router:Router
-  ) {}
+  ) {
+    console.log('new SubjectListComponent');
+  }
 
   ngOnInit() {
     this.subjects = this.subjectService.getSubjects();

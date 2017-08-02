@@ -1,4 +1,5 @@
 import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/delay';
 import { Injectable } from '@angular/core';
 import { PreloadingStrategy, Route } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -14,8 +15,11 @@ export class SelectivePreloadingStrategy implements PreloadingStrategy {
 
       // log the route path to the console
       console.log('Preloaded: ' + route.path);
+      
+      let ret = load();
 
-      return load();
+      // load() is not subscribed. Return value does not matter.
+      return ret.do(value => console.log(`SUBSCRIBED???: ${value}`));
     } else {
       return Observable.of(null);
     }

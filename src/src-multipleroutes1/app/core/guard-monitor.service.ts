@@ -1,3 +1,8 @@
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/delay';
+import 'rxjs/add/operator/do';
+
 import { Injectable } from '@angular/core';
 import { 
     CanActivate, CanActivateChild, CanDeactivate, Resolve, CanLoad,
@@ -33,7 +38,7 @@ export class GuardMonitorService implements CanActivate, CanActivateChild, CanDe
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         let data = `@${route.url}`;
         console.log(`> Resolve for url:${route.url}`);
-        return data;
+        return Observable.of(data).delay(5000).do(value => console.log('TIMEOUT'));
     }
 
     canLoad(route: Route) {
