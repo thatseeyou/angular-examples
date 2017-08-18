@@ -2,6 +2,7 @@ import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/do';
 
 import { Hero } from './hero';
 
@@ -15,8 +16,15 @@ export class HeroService {
 
   getHeroes(): Promise<Hero[]> {
     return this.http.get(this.heroesUrl)
+              //  .map(response => {
+              //    console.log(JSON.parse(response.text()));
+              //    return JSON.parse(response.text()) as Hero[]
+              //  })
                .toPromise()
-               .then(response => response.json().data as Hero[])
+               .then(response => { 
+                //  console.dir(response)
+                 return response.json().data as Hero[]
+               })
                .catch(this.handleError);
   }
 
