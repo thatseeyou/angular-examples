@@ -45,10 +45,14 @@
       "zone.js":                    ["jspm_packages/npm/zone.js@0.8.16"],
       "zone.js/*":                  ["jspm_packages/npm/zone.js@0.8.16/*"],
       "zone.js/dist/zone":          ["jspm_packages/npm/zone.js@0.8.16/dist/zone.js.d.ts"],
-      "@angular/platform-browser/*":["jspm_packages/npm/@angular/platform-browser@4.3.4/*"],
-      "@angular/animations/*":      ["jspm_packages/npm/@angular/animations@4.3.4/*"],
-      "@angular/*":                 ["jspm_packages/npm/@angular/*@4.3.4"],
+      "@angular/platform-browser/*":["jspm_packages/npm/@angular/platform-browser@4.3.5/*"],
+      "@angular/animations/*":      ["jspm_packages/npm/@angular/animations@4.3.5/*"],
+      "@angular/*":                 ["jspm_packages/npm/@angular/*@4.3.5"],
       "angular-in-memory-web-api":  ["jspm_packages/npm/angular-in-memory-web-api@0.3.2"],
+      "firebase":                   ["jspm_packages/npm/firebase@4.3.0"], 
+      "firebase/*":                 ["jspm_packages/npm/firebase@4.3.0/*"], 
+      "angularfire2":               ["jspm_packages/npm/angularfire2@4.0.0-rc.2"],
+      "angularfire2/*":             ["jspm_packages/npm/angularfire2@4.0.0-rc.2/*"],
       "*": [
         "node_modules/@types/*",
         "types/*"

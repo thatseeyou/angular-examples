@@ -27,6 +27,39 @@ $ npm run serve
 
 ## 7. Multiple secondary router outlets
 
+## 8. AngularFire2
+### install
+```
+proj> jspm install npm:angularfire2
+```
+### edit tsconfig.json
+```
+...
+      "firebase":                   ["jspm_packages/npm/firebase@4.3.0"], 
+      "firebase/*":                 ["jspm_packages/npm/firebase@4.3.0/*"], 
+      "angularfire2":               ["jspm_packages/npm/angularfire2@4.0.0-rc.2"],
+      "angularfire2/*":             ["jspm_packages/npm/angularfire2@4.0.0-rc.2/*"],
+...
+```
+
+### edit systemjs.config.js
+```
+...
+    "src-firebase/app": {
+      "defaultExtension": "js",
+      "meta": {
+        "./*.js": {
+          "loader": "systemjs-angular-loader.js"
+        }
+      },
+      "map": {
+        "angularfire2/database": "npm:angularfire2@4.0.0-rc.2/bundles/database.umd.js",
+        "angularfire2/auth": "npm:angularfire2@4.0.0-rc.2/bundles/auth.umd.js"
+      }
+    }
+...
+```
+
 ### app-routing.module.ts
 ```
 ...

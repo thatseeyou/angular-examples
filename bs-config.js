@@ -23,7 +23,8 @@ module.exports = {
           { from: /\/multipleroutes0.*/, to: '/multipleroutes0.html' },
           { from: /\/multipleroutes1.*/, to: '/multipleroutes1.html' },
           { from: /\/rainbow-query.*/, to: '/rainbow-query.html' },
-          { from: /\/rainbow.*/, to: '/rainbow.html' }
+          { from: /\/rainbow.*/, to: '/rainbow.html' },
+          { from: /\/firebase.*/, to: '/firebase.html' }
         ],
         verbose: false
       })
