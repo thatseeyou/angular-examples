@@ -14,6 +14,7 @@ module.exports = {
         // change HTML : <base href="/toh">
         rewrites: [
           { from: /\/hello.*/, to: '/hello.html' },
+          { from: /\/toh-firebase.*/, to: '/toh-firebase.html' },
           { from: /\/toh.*/, to: '/toh.html' },
           { from: /\/top10.*/, to: '/top10.html' },
           { from: /\/template-syntax.*/, to: '/template-syntax.html' },
