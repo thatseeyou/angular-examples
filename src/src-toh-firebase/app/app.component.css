@@ -26,3 +26,6 @@ nav a:hover {
 nav a.active {
   color: #039be5;
 }
+nav button {
+  background-color: hsl(0, 38%, 64%);
+}

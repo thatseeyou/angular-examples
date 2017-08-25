@@ -1,7 +1,8 @@
 <h2>My Heroes</h2>
 <div>
+  <label>Hero id:</label> <input #heroId />
   <label>Hero name:</label> <input #heroName />
-  <button (click)="add(heroName.value); heroName.value=''">
+  <button (click)="add(heroId.value, heroName.value); heroId.value=''; heroName.value=''">
     Add
   </button>
 </div>

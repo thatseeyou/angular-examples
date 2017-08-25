@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
+// import { FirebaseListObservable } from 'angularfire2/database';
 
 import { Hero }        from './hero';
 import { HeroService } from './hero.service';
@@ -9,12 +12,13 @@ import { HeroService } from './hero.service';
   styleUrls: [ './dashboard.component.css' ]
 })
 export class DashboardComponent implements OnInit {
-  heroes: Hero[] = [];
+  heroes: Observable<Hero[]>;
 
   constructor(private heroService: HeroService) { }
 
   ngOnInit(): void {
-    this.heroService.getHeroes()
-      .then(heroes => this.heroes = heroes.slice(1, 5));
+    this.heroes = this.heroService.getHeroes()
+      .map(heroes => heroes.slice(1, 5));
   }
+
 }

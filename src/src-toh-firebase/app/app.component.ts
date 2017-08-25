@@ -1,4 +1,5 @@
-import { Component }          from '@angular/core';
+import { Component }   from '@angular/core';
+import { HeroService } from './hero.service';
 
 @Component({
   selector: 'my-app',
@@ -7,6 +8,7 @@ import { Component }          from '@angular/core';
     <nav>
       <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
       <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
+      <button (click)="resetDB()">Reset DB</button>
     </nav>
     <router-outlet></router-outlet>
   `,
@@ -14,4 +16,10 @@ import { Component }          from '@angular/core';
 })
 export class AppComponent {
   title = 'Tour of Heroes';
+
+  constructor(private heroService: HeroService) { }
+
+  resetDB(): void {
+    this.heroService.resetDB();
+  }
 }

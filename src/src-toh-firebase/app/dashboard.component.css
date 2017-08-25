@@ -18,7 +18,9 @@ h3 {
   text-align: center; margin-bottom: 0;
 }
 h4 {
+  line-height: 1.2; /* calculated value of default 'normal' depends on font-family */
   position: relative;
+  /* background-color: greenyellow; */
 }
 .grid {
   margin: 0;
