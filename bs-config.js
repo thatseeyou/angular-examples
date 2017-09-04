@@ -25,7 +25,8 @@ module.exports = {
           { from: /\/multipleroutes1.*/, to: '/multipleroutes1.html' },
           { from: /\/rainbow-query.*/, to: '/rainbow-query.html' },
           { from: /\/rainbow.*/, to: '/rainbow.html' },
-          { from: /\/firebase.*/, to: '/firebase.html' }
+          { from: /\/firebase.*/, to: '/firebase.html' },
+          { from: /\/reversi.*/, to: '/reversi.html' }
         ],
         verbose: false
       })
