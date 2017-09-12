@@ -1,0 +1,3 @@
+<div *ngFor="let cell of cells;index as i" (click)="touchCell(i)">
+    <div class="disk" [class.black]="cell.state == -1" [class.white]="cell.state == 1"></div>
+</div>

@@ -1,0 +1,42 @@
+:host {
+    --cell-width: 60px;
+    --cell-margin: 4px;
+    --disk-percent: 0.8;
+    --cell-height: var(--cell-width);
+    --disk-width: calc(var(--cell-width) * var(--disk-percent));
+    --disk-height: var(--disk-width);
+    --board-width: calc((var(--cell-width) + var(--cell-margin)) * 8);
+}
+
+:host {
+    display: flex;
+    flex-wrap: wrap;
+    width: var(--board-width);
+    height: var(--board-height);
+    background-color: black;
+    padding: calc(var(--cell-margin) / 2);
+    border-radius: calc(var(--cell-margin));
+}
+:host > div {
+    width: var(--cell-width);
+    height: var(--cell-height);
+    margin: calc(var(--cell-margin) / 2);
+    background-color: #5ED75E;
+}
+
+:host > div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.disk {
+    width: var(--disk-width);
+    height: var(--disk-height);
+    border-radius: var(--disk-width);
+}
+.black {
+    background-color: black;
+}
+.white {
+    background-color: white;
+}
