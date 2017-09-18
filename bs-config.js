@@ -1,5 +1,8 @@
 module.exports = {
   browser: "firefox",
+  watchOptions: {
+    ignored: ["node_modules", "jspm_packages", ".vscode"]
+  },
   server: {
     baseDir: "src",
     "routes": {
