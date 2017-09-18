@@ -1,3 +1,9 @@
+<div class="board">
 <div *ngFor="let cell of cells;index as i" (click)="touchCell(i)">
-    <div class="disk" [class.black]="cell.state == -1" [class.white]="cell.state == 1"></div>
+    <div class="disk" [ngClass]="cell.classes">{{cell.numReverable > 0 ? cell.numReverable : ''}}</div>
+</div>
+</div>
+<div class="score">
+    <div>흑 : {{score.black}}</div>
+    <div>백 : {{score.white}}</div>
 </div>

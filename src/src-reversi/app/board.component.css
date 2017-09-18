@@ -5,10 +5,15 @@
     --cell-height: var(--cell-width);
     --disk-width: calc(var(--cell-width) * var(--disk-percent));
     --disk-height: var(--disk-width);
+    --puttable-width: calc(var(--disk-width) * 0.4);
+    --puttable-height: var(--puttable-width);
     --board-width: calc((var(--cell-width) + var(--cell-margin)) * 8);
+    --count-font: Courier New, Courier, monospace;
+    --black-color: black;
+    --white-color: white;
 }
 
-:host {
+.board {
     display: flex;
     flex-wrap: wrap;
     width: var(--board-width);
@@ -17,26 +22,58 @@
     padding: calc(var(--cell-margin) / 2);
     border-radius: calc(var(--cell-margin));
 }
-:host > div {
+.board > div {
     width: var(--cell-width);
     height: var(--cell-height);
     margin: calc(var(--cell-margin) / 2);
     background-color: #5ED75E;
 }
 
-:host > div {
+.board > div {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
+/* .disk {
+    width: var(--disk-width);
+    height: var(--disk-height);
+    border-radius: var(--disk-width);
+} */
 .disk {
+    display: hidden;
+}
+.black, .white {
     width: var(--disk-width);
     height: var(--disk-height);
     border-radius: var(--disk-width);
 }
+.blackPuttable, .whitePuttable {
+    width: var(--puttable-width);
+    height: var(--puttable-height);
+    border-radius: var(--puttable-width);
+
+    text-align: center;
+    font-size: 14px;
+    line-height: var(--puttable-width);
+    font-family: var(--count-font);
+    cursor: grab;
+}
 .black {
-    background-color: black;
+    background-color: var(--black-color);
 }
 .white {
-    background-color: white;
+    background-color: var(--white-color);
+}
+.blackPuttable {
+    background-color: var(--black-color);
+    color: var(--white-color);
+}
+.whitePuttable {
+    background-color: var(--white-color);
+    color: var(--black--color);;
+}
+
+.score {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
 }
