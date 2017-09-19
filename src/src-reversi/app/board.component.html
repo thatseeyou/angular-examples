@@ -1,5 +1,5 @@
 <div class="board">
-<div *ngFor="let cell of cells;index as i" (click)="touchCell(i)">
+<div *ngFor="let cell of cells;index as i" (click)="touchCell(i)" [class.grab]="cell.classes.blackPuttable || cell.classes.whitePuttable">
     <div class="disk" [ngClass]="cell.classes">{{cell.numReverable > 0 ? cell.numReverable : ''}}</div>
 </div>
 </div>

@@ -4,9 +4,13 @@ module.exports = {
     ignored: ["node_modules", "jspm_packages", ".vscode"]
   },
   server: {
-    baseDir: "src",
-    "routes": {
+    baseDir: ["src"],
+    routes: {
       "/jspm_packages": "jspm_packages"
+    },
+    serveStaticOptions: {
+      etag: false,
+      cacheControl: false
     },
     middleware: {
       // overrides the second middleware default with new settings
@@ -36,3 +40,16 @@ module.exports = {
     }
   }
 };
+
+      // 2: function(req, res, next) {
+      //   if (/^\/jspm_packages/.test(req.url)) {
+      //     res.setHeader('Cache-Control', 'public, max-age=31536000');
+      //     res.setHeader('Expires', 'Tue, 01 JAN 2019 00:00:00 GMT');
+      //     res.setHeader('Etag', null);
+      //     // console.dir('MATCH: ' + req.url);
+      //   }
+      //   else {
+      //     console.dir('UNMATCH: ' + req.url);
+      //   }
+      //   next();
+      // }
