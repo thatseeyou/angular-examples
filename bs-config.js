@@ -4,13 +4,15 @@ module.exports = {
     ignored: ["node_modules", "jspm_packages", ".vscode"]
   },
   server: {
-    baseDir: ["src"],
+    baseDir: "src",
     routes: {
       "/jspm_packages": "jspm_packages"
     },
+    // only applied for baseDir(src/**)
+    // not applied for routes(jspm_packages)
     serveStaticOptions: {
-      etag: false,
-      cacheControl: false
+      etag: true,         // default : true
+      cacheControl: true  // default : true
     },
     middleware: {
       // overrides the second middleware default with new settings
@@ -36,20 +38,15 @@ module.exports = {
           { from: /\/reversi.*/, to: '/reversi.html' }
         ],
         verbose: false
-      })
+      }),
+      /* DO NOT CHECK for not-changing files */
+      2: function(req, res, next) {
+        if (/^\/jspm_packages/.test(req.url)) {
+          res.setHeader('Cache-Control', 'public, max-age=315360000');
+          res.setHeader('Expires', 'Mon, 01 JAN 2029 00:00:00 GMT');
+        }
+        next();
+      }
     }
   }
 };
-
-      // 2: function(req, res, next) {
-      //   if (/^\/jspm_packages/.test(req.url)) {
-      //     res.setHeader('Cache-Control', 'public, max-age=31536000');
-      //     res.setHeader('Expires', 'Tue, 01 JAN 2019 00:00:00 GMT');
-      //     res.setHeader('Etag', null);
-      //     // console.dir('MATCH: ' + req.url);
-      //   }
-      //   else {
-      //     console.dir('UNMATCH: ' + req.url);
-      //   }
-      //   next();
-      // }
