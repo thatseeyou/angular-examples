@@ -48,5 +48,10 @@ module.exports = {
         next();
       }
     }
+  },
+  ghostMode: {
+    clicks: false,
+    forms: false,
+    scroll: false
   }
 };
