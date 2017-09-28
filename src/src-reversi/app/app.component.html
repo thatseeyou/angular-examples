@@ -1,13 +1,14 @@
 <h1>{{title}}</h1>
 <!-- <button (click)="resetDB()">Reset DB</button> -->
+<div class="manual">보드 이름을 변경하면 해당 보드에 접속합니다. 선수가 지정이 되지 않은 경우에 자신의 이름을 입력하면 선수가 됩니다. 선수가 없는 보드를 찾아서 경기를 하면 됩니다. 빨간색 화살표는 누가 둘 차례인지를 나타내고 파란 바탕은 내가 선수임을 뜻합니다. 경기중에 페이지 다시읽기를 하면 경기를 할 수 없습니다.</div>
 <div class="numBoard"><span>접속 보드 수 : {{numBoard}}</span><input [(ngModel)]="numBoard" (change)="onChangeNumBoard($event.target.value)" value="1" type="range" min="1" max="10"></div>
 <div class="flex">
   <div *ngFor="let boardContext of boardContexts" class="board">
     <div><button (click)="newGame(boardContext)">New Game</button></div>
     <div>보드 이름: <input #nameControl="ngModel" [ngModel]="boardContext.board.name" (change)="onChangeBoardName(boardContext, $event)" placeholder="loading..."/></div>
     <div class="score">
-      <div [class.me]="boardContext.myTurn == -1"><span [class.playing]="boardContext.currentTurn == -1">►</span> 흑 - <input [disabled]="boardContext.board.black != false" [class.showonly]="boardContext.board.black != false" [ngModel]="boardContext.board.black === false ? '' : boardContext.board.black" (change)="onChangeBlackName(boardContext, $event.target.value)" [placeholder]="boardContext.blackPlaceholder"> : {{boardContext.score.black}}</div>
       <div [class.me]="boardContext.myTurn == 1"><span [class.playing]="boardContext.currentTurn == 1">►</span> 백 - <input [disabled]="boardContext.board.white != false" [class.showonly]="boardContext.board.white != false" [ngModel]="boardContext.board.white === false ? '' : boardContext.board.white" (change)="onChangeWhiteName(boardContext, $event.target.value)" [placeholder]="boardContext.whitePlaceholder"> : {{boardContext.score.white}}</div>
+      <div [class.me]="boardContext.myTurn == -1"><span [class.playing]="boardContext.currentTurn == -1">►</span> 흑 - <input [disabled]="boardContext.board.black != false" [class.showonly]="boardContext.board.black != false" [ngModel]="boardContext.board.black === false ? '' : boardContext.board.black" (change)="onChangeBlackName(boardContext, $event.target.value)" [placeholder]="boardContext.blackPlaceholder"> : {{boardContext.score.black}}</div>
     </div>
     <board [nameControl]="nameControl" 
       [inputPipe]="boardContext.outputPipe" 
