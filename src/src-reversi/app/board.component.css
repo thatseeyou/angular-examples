@@ -1,5 +1,5 @@
 :host {
-    --cell-width: 60px;
+    --cell-width: 40px;
     --cell-margin: 4px;
     --disk-percent: 0.8;
     --cell-height: var(--cell-width);
@@ -73,9 +73,4 @@
 .whitePuttable {
     background-color: var(--white-color);
     color: var(--black--color);;
-}
-
-.score {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 16px;
 }

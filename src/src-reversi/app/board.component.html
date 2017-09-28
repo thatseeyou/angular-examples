@@ -1,9 +1,6 @@
+<div>key = {{currentBoard.$key}}</div>
 <div class="board">
 <div *ngFor="let cell of cells;index as i" (click)="touchCell(i)" [class.grab]="cell.classes.blackPuttable || cell.classes.whitePuttable">
-    <div class="disk" [ngClass]="cell.classes">{{cell.numReverable > 0 ? cell.numReverable : ''}}</div>
+    <div class="disk" [ngClass]="cell.classes">{{cell.numReversable > 0 ? cell.numReversable : ''}}</div>
 </div>
-</div>
-<div class="score">
-    <div>흑 : {{score.black}}</div>
-    <div>백 : {{score.white}}</div>
 </div>

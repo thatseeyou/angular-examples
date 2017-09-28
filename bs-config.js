@@ -1,5 +1,6 @@
 module.exports = {
   browser: "firefox",
+  open: false,
   watchOptions: {
     ignored: ["node_modules", "jspm_packages", ".vscode"]
   },

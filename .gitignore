@@ -1,5 +1,6 @@
 # temporary files
 *.swp
+.DS_Store
 
 # restored by npm install
 node_modules/
