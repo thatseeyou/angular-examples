@@ -30,19 +30,24 @@ const enum Direction {
 export class BoardComponent implements OnInit {
     @Input() inputPipe:Subject<Command> = null;
     @Input() nameControl:NgModel = null;
-    @Output() boardConnected = new EventEmitter<string>();
     @Output() boardChanged = new EventEmitter<Board>();
     @Output() scoreChanged = new EventEmitter<Score>();
+    @Output() currentTurnChanged = new EventEmitter<TurnState>();
+    @Output() myTurnChanged = new EventEmitter<TurnState>();
 
     boardSubscription:Subscription = null;
     historySubscription:Subscription = null;
 
-    currentBoard: Board;
+    currentBoard: Board = {
+        name: null,
+        white: false,
+        black: false
+    };
     currentHistory: GameHistory = {};
 
     cells: Array<Cell>;
     _myTurn: TurnState = null;
-    currentTurn: TurnState;
+    _currentTurn: TurnState;
     score: {
         white: number;
         black: number;
@@ -57,14 +62,26 @@ export class BoardComponent implements OnInit {
         this._myTurn = newValue;
 
         this.updatePuttableCell(this.currentTurn);
+        this.myTurnChanged.emit(newValue);
     }
+
+    get currentTurn() {
+        return this._currentTurn;
+    }
+    set currentTurn(newValue: TurnState) {
+        this._currentTurn = newValue;
+
+        this.currentTurnChanged.emit(newValue);
+    }
+
 
     constructor(private boardService: BoardService) { }
 
     ngOnInit() { 
         this.cells = Array(CellSize);
 
-        this.observeBoard('default');
+        this.initGame();
+        // this.observeBoard('default');
 
         if (this.inputPipe) {
             this.inputPipe.subscribe(command => this.commandCalled(command));

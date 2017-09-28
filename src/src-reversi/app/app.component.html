@@ -1,16 +1,18 @@
 <h1>{{title}}</h1>
-<button (click)="resetDB()">Reset DB</button>
+<!-- <button (click)="resetDB()">Reset DB</button> -->
+<div class="numBoard"><span>접속 보드 수 : {{numBoard}}</span><input [(ngModel)]="numBoard" (change)="onChangeNumBoard($event.target.value)" value="1" type="range" min="1" max="10"></div>
 <div class="flex">
   <div *ngFor="let boardContext of boardContexts" class="board">
     <div><button (click)="newGame(boardContext)">New Game</button></div>
     <div>보드 이름: <input #nameControl="ngModel" [ngModel]="boardContext.board.name" (change)="onChangeBoardName(boardContext, $event)" placeholder="loading..."/></div>
     <div class="score">
-      <div><span>►</span> 흑 - <input [disabled]="boardContext.board.black != false" [class.showonly]="boardContext.board.black != false" [ngModel]="boardContext.board.black === false ? '' : boardContext.board.black" (change)="onChangeBlackName(boardContext, $event.target.value)" [placeholder]="boardContext.blackPlaceholder"> : {{boardContext.score.black}}</div>
-      <div><span>►</span>백 - <input [disabled]="boardContext.board.white != false" [class.showonly]="boardContext.board.white != false" [ngModel]="boardContext.board.white === false ? '' : boardContext.board.white" (change)="onChangeWhiteName(boardContext, $event.target.value)" [placeholder]="boardContext.whitePlaceholder"> : {{boardContext.score.white}}</div>
+      <div [class.me]="boardContext.myTurn == -1"><span [class.playing]="boardContext.currentTurn == -1">►</span> 흑 - <input [disabled]="boardContext.board.black != false" [class.showonly]="boardContext.board.black != false" [ngModel]="boardContext.board.black === false ? '' : boardContext.board.black" (change)="onChangeBlackName(boardContext, $event.target.value)" [placeholder]="boardContext.blackPlaceholder"> : {{boardContext.score.black}}</div>
+      <div [class.me]="boardContext.myTurn == 1"><span [class.playing]="boardContext.currentTurn == 1">►</span> 백 - <input [disabled]="boardContext.board.white != false" [class.showonly]="boardContext.board.white != false" [ngModel]="boardContext.board.white === false ? '' : boardContext.board.white" (change)="onChangeWhiteName(boardContext, $event.target.value)" [placeholder]="boardContext.whitePlaceholder"> : {{boardContext.score.white}}</div>
     </div>
     <board [nameControl]="nameControl" 
       [inputPipe]="boardContext.outputPipe" 
-      (boardConnected)="boardConnected(boardContext, $event)" 
+      (currentTurnChanged)="updateCurrentTurn(boardContext, $event)"
+      (myTurnChanged)="updateMyTurn(boardContext, $event)"
       (scoreChanged)="updateScore(boardContext, $event)"
       (boardChanged)="updateBoard(boardContext, $event)"></board>
   </div>

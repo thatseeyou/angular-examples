@@ -1,29 +1,64 @@
+@keyframes playing {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@-webkit-keyframes playing {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 h1 {
   color: #369;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 250%;
+  margin-bottom: 10px;
+}
+.numBoard {
+  height: 22px;
+  margin-bottom: 10px;
+}
+.numBoard > span {
+  line-height: 22px;
+}
+.numBoard > input {
+  display:inline-block;
+  height: 22px;
 }
 .score {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: Courier New, Courier, monospace;
   font-size: 20px;
+}
+.score .me {
+  background-color: rgba(65, 105, 225, 0.5);
 }
 .score input {
   display: inline-block; /* inline in case of firefox */
-  font-family: Georgia, 'Times New Roman', Times, serif;
   width: 100px;
   height: 20px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   border-color: rgb(218,218,218);
   background-color: rgba(158, 75, 75, 0.5);
+}
+.score input:disabled {
+  color: black;
 }
 .score input.showonly {
   border-color: transparent;
   background-color: transparent;
 }
-.score span.playing {
-
+.score span {
+  opacity: 0;
 }
+.score span.playing {
+  font-size: 20px;
+  color: red;
+  opacity: 0;
+  animation: 1.2s ease-in-out 0s infinite playing;
+  -webkit-animation: 1.2s ease-in-out 0s infinite playing;
+}
+
 .flex {
   display: flex;
   flex-flow: row wrap;
