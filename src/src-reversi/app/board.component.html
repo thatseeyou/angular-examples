@@ -1,6 +1,10 @@
 <div class="board">
-<div *ngFor="let cell of cells;index as i" (click)="touchCell(i)" [class.grab]="cell.classes.blackPuttable || cell.classes.whitePuttable">
-    <div class="disk" [ngClass]="cell.classes">{{cell.numReversable > 0 ? cell.numReversable : ''}}</div>
+<div class="cell" *ngFor="let cell of cells;index as i" [ngClass]="cell.classes" (click)="touchCell(i)" [class.grab]="cell.classes.blackPuttable || cell.classes.whitePuttable">
+    <div class="puttable" *ngIf="cell.classes.blackPuttable || cell.classes.whitePuttable">{{cell.numReversable > 0 ? cell.numReversable : ''}}</div>
+    <div class="flipper" *ngIf="cell.classes.white || cell.classes.black">
+        <div></div>
+        <div></div>
+    </div>
 </div>
 </div>
 <div>key = {{currentBoard.$key}}</div>

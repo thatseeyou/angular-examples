@@ -13,6 +13,10 @@
     --white-color: white;
 }
 
+.grab {
+    cursor: grab;
+}
+
 .board {
     display: flex;
     flex-wrap: wrap;
@@ -22,55 +26,65 @@
     padding: calc(var(--cell-margin) / 2);
     border-radius: calc(var(--cell-margin));
 }
-.board > div {
+.board > .cell {
     width: var(--cell-width);
     height: var(--cell-height);
     margin: calc(var(--cell-margin) / 2);
     background-color: #5ED75E;
-}
 
-.board > div {
     display: flex;
     justify-content: space-around;
     align-items: center;
+
+    position: relative;
+    perspective: 150px;
 }
-/* .disk {
-    width: var(--disk-width);
-    height: var(--disk-height);
-    border-radius: var(--disk-width);
-} */
-.disk {
-    display: hidden;
-}
-.grab {
-    cursor: grab;
-}
-.black, .white {
-    width: var(--disk-width);
-    height: var(--disk-height);
-    border-radius: var(--disk-width);
-}
-.blackPuttable, .whitePuttable {
+
+.puttable{
     width: var(--puttable-width);
     height: var(--puttable-height);
     border-radius: var(--puttable-width);
 
     text-align: center;
     font-size: 14px;
-    line-height: var(--puttable-width);
+    line-height: var(--puttable-height);
     font-family: var(--count-font);
 }
-.black {
-    background-color: var(--black-color);
-}
-.white {
-    background-color: var(--white-color);
-}
-.blackPuttable {
+.blackPuttable .puttable {
     background-color: var(--black-color);
     color: var(--white-color);
 }
-.whitePuttable {
+.whitePuttable .puttable {
     background-color: var(--white-color);
-    color: var(--black--color);;
+    color: var(--black--color);
+}
+
+.flipper {
+    transform-style: preserve-3d;
+    transition: 2s;
+
+    width: var(--disk-width);
+    height: var(--disk-height);
+}
+.flipper > div {
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    width: var(--disk-width);
+    height: var(--disk-height);
+    border-radius: var(--disk-width);
+}
+.flipper > div:nth-of-type(1) {
+    background-color: var(--white-color);
+    color: var(--black-color);
+}
+.flipper > div:nth-of-type(2) {
+    background-color: var(--black-color);
+    color: var(--white-color);
+    transform: rotateY(180deg);
+}
+
+.white .flipper {
+    transform: rotate3d(-1,0,0,180deg);
 }
