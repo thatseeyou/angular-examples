@@ -1,7 +1,7 @@
 <div class="board">
 <div class="cell" *ngFor="let cell of cells;index as i" [ngClass]="cell.classes" (click)="touchCell(i)" [class.grab]="cell.classes.blackPuttable || cell.classes.whitePuttable">
     <div class="puttable" *ngIf="cell.classes.blackPuttable || cell.classes.whitePuttable">{{cell.numReversable > 0 ? cell.numReversable : ''}}</div>
-    <div class="flipper" *ngIf="cell.classes.white || cell.classes.black">
+    <div class="flipper" [style.animation-name]="cell.turnAnimationName" [style.animation-duration]="'0.5s'" [style.animation-delay]="cell.turnAnimationDelay" *ngIf="cell.classes.white || cell.classes.black">
         <div></div>
         <div></div>
     </div>

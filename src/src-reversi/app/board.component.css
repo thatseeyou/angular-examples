@@ -1,3 +1,83 @@
+@keyframes turnToWhiteNW {
+    from { transform: rotate3d(1,-1,0,0deg);   }
+    50%  { transform: rotate3d(1,-1,0,90deg);  }
+    to   { transform: rotate3d(1,-1,0,180deg); }
+}
+@keyframes turnToBlackNW {
+    from { transform: rotate3d(1,-1,0,180deg); }
+    50%  { transform: rotate3d(1,-1,0,270deg); }
+    to   { transform: rotate3d(1,-1,0,360deg); }
+}
+@keyframes turnToWhiteN {
+    from { transform: rotate3d(1,0,0,0deg);   }
+    50%  { transform: rotate3d(1,0,0,90deg);  }
+    to   { transform: rotate3d(1,0,0,180deg); }
+}
+@keyframes turnToBlackN {
+    from { transform: rotate3d(1,0,0,180deg); }
+    50%  { transform: rotate3d(1,0,0,270deg); }
+    to   { transform: rotate3d(1,0,0,360deg); }
+}
+@keyframes turnToWhiteNE {
+    from { transform: rotate3d(1,1,0,0deg);   }
+    50%  { transform: rotate3d(1,1,0,90deg);  }
+    to   { transform: rotate3d(1,1,0,180deg); }
+}
+@keyframes turnToBlackNE {
+    from { transform: rotate3d(1,1,0,180deg); }
+    50%  { transform: rotate3d(1,1,0,270deg); }
+    to   { transform: rotate3d(1,1,0,360deg); }
+}
+@keyframes turnToWhiteE {
+    from { transform: rotate3d(0,1,0,0deg);   }
+    50%  { transform: rotate3d(0,1,0,90deg);  }
+    to   { transform: rotate3d(0,1,0,180deg); }
+}
+@keyframes turnToBlackE {
+    from { transform: rotate3d(0,1,0,180deg); }
+    50%  { transform: rotate3d(0,1,0,270deg); }
+    to   { transform: rotate3d(0,1,0,360deg); }
+}
+@keyframes turnToWhiteSE {
+    from { transform: rotate3d(-1,1,0,0deg);   }
+    50%  { transform: rotate3d(-1,1,0,90deg);  }
+    to   { transform: rotate3d(-1,1,0,180deg); }
+}
+@keyframes turnToBlackSE {
+    from { transform: rotate3d(-1,1,0,180deg); }
+    50%  { transform: rotate3d(-1,1,0,270deg); }
+    to   { transform: rotate3d(-1,1,0,360deg); }
+}
+@keyframes turnToWhiteS {
+    from { transform: rotate3d(-1,0,0,0deg);   }
+    50%  { transform: rotate3d(-1,0,0,90deg);  }
+    to   { transform: rotate3d(-1,0,0,180deg); }
+}
+@keyframes turnToBlackS {
+    from { transform: rotate3d(-1,0,0,180deg); }
+    50%  { transform: rotate3d(-1,0,0,270deg); }
+    to   { transform: rotate3d(-1,0,0,360deg); }
+}
+@keyframes turnToWhiteSW {
+    from { transform: rotate3d(-1,-1,0,0deg);   }
+    50%  { transform: rotate3d(-1,-1,0,90deg);  }
+    to   { transform: rotate3d(-1,-1,0,180deg); }
+}
+@keyframes turnToBlackSW {
+    from { transform: rotate3d(-1,-1,0,180deg); }
+    50%  { transform: rotate3d(-1,-1,0,270deg); }
+    to   { transform: rotate3d(-1,-1,0,360deg); }
+}
+@keyframes turnToWhiteW {
+    from { transform: rotate3d(0,-1,0,0deg);   }
+    50%  { transform: rotate3d(0,-1,0,90deg);  }
+    to   { transform: rotate3d(0,-1,0,180deg); }
+}
+@keyframes turnToBlackW {
+    from { transform: rotate3d(0,-1,0,180deg); }
+    50%  { transform: rotate3d(0,-1,0,270deg); }
+    to   { transform: rotate3d(0,-1,0,360deg); }
+}
 :host {
     --cell-width: 40px;
     --cell-margin: 4px;
@@ -14,7 +94,7 @@
 }
 
 .grab {
-    cursor: grab;
+    cursor: pointer;
 }
 
 .board {
@@ -37,7 +117,7 @@
     align-items: center;
 
     position: relative;
-    perspective: 150px;
+    perspective: 30px;
 }
 
 .puttable{
@@ -61,7 +141,7 @@
 
 .flipper {
     transform-style: preserve-3d;
-    transition: 2s;
+    /* transition: 2s; */
 
     width: var(--disk-width);
     height: var(--disk-height);
@@ -76,15 +156,24 @@
     border-radius: var(--disk-width);
 }
 .flipper > div:nth-of-type(1) {
-    background-color: var(--white-color);
-    color: var(--black-color);
+    background-color: var(--black-color);
+    /* color: var(--white-color); */
 }
 .flipper > div:nth-of-type(2) {
-    background-color: var(--black-color);
-    color: var(--white-color);
+    background-color: var(--white-color);
+    /* color: var(--black-color); */
     transform: rotateY(180deg);
 }
 
 .white .flipper {
-    transform: rotate3d(-1,0,0,180deg);
+    transform: rotateY(180deg);
+    animation-fill-mode: both; 
+}
+
+.black .flipper {
+    /* animation-name: turnToBlack;
+    animation-duration: 2s;
+    animation-fill-mode: both; */
+    animation-fill-mode: both; 
+    /* transform: rotateY(0deg); */
 }

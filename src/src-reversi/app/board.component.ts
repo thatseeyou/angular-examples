@@ -7,20 +7,20 @@ import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/map';
 
-import { Score, Command, Board, GameHistory, GameHistoryItem, Cell, CellState, TurnState } from './typedef';
+import { Direction, Score, Command, Board, GameHistory, GameHistoryItem, Cell, CellState, TurnState, ReversableDisk } from './typedef';
 
 const CellSize = 64;
 
-const enum Direction {
-    NW = -9,
-    N = -8,
-    NE = -7,
-    W = -1,
-    E = 1,
-    SW = 7,
-    S = 8,
-    SE = 9
-}
+// const enum Direction {
+//     NW = -9,
+//     N = -8,
+//     NE = -7,
+//     W = -1,
+//     E = 1,
+//     SW = 7,
+//     S = 8,
+//     SE = 9
+// }
 
 @Component({
     selector: 'board',
@@ -242,6 +242,7 @@ export class BoardComponent implements OnInit {
         console.log(`received history at ${cellIndex} on ${turn == CellState.Black ? 'black' : 'white'}`);
 
         this.reverse(cellIndex, turn);
+        // must called after reverse
         this.setCellStateForIndex(cellIndex, turn);
 
         // check if trun change is possible
@@ -280,6 +281,8 @@ export class BoardComponent implements OnInit {
                     blackPuttable: false,
                     whitePuttable: false
                 },
+                turnAnimationName: '',
+                turnAnimationDelay: '',
                 numReversable: 0
              };
         }
@@ -313,8 +316,29 @@ export class BoardComponent implements OnInit {
     private setCellState(posX: number, posY: number, state: CellState) {
         this.setCellStateForIndex(posY * 8 + posX, state);
     }
+    private setAnimationForIndex(cellIndex: number, state: TurnState, direction: Direction, distance: number)  {
+        function directionString(direction: Direction) {
+            switch (direction) {
+                case Direction.NW: return 'NW';
+                case Direction.N: return 'N';
+                case Direction.NE: return 'NE';
+                case Direction.E: return 'E';
+                case Direction.SE: return 'SE';
+                case Direction.S: return 'S';
+                case Direction.SW: return 'SW';
+                case Direction.W: return 'W';
+            }
+        }
 
-    private reversableDisksForOneDirection(direction: Direction, cellIndex: number, turnState: TurnState): number[] {
+        let turnAnimationName = `turnTo${state == CellState.Black ? 'Black' : 'White'}${directionString(direction)}`;
+        let turnAnimationDelay = (distance - 1) * 0.25;
+        this.cells[cellIndex].turnAnimationName = turnAnimationName;
+        this.cells[cellIndex].turnAnimationDelay = `${turnAnimationDelay}s`;
+
+        console.log(`at ${cellIndex} ${turnAnimationName} delay:${turnAnimationDelay}`);
+    }
+
+    private reversableDisksForOneDirection(direction: Direction, cellIndex: number, turnState: TurnState): ReversableDisk[] {
         // console.log(`direction = ${direction}, cellIndex = ${cellIndex}, turnState = ${turnState}`);
         // 1. empty on diskIndex 
         if (turnState == CellState.Empty || this.cells[cellIndex].state != CellState.Empty) {
@@ -324,10 +348,10 @@ export class BoardComponent implements OnInit {
 
         // 2. check boundary
 
-        let reversableIndexes:number[] = [];
+        let reversableDisks:ReversableDisk[] = [];
         let [prevX, prevY] = this.xyFromIndex(cellIndex);
 
-        for (let nextIndex = cellIndex + direction; nextIndex >= 0 && nextIndex < CellSize; nextIndex += direction) {
+        for (let nextIndex = cellIndex + direction, distance = 1; nextIndex >= 0 && nextIndex < CellSize; nextIndex += direction, distance += 1) {
             // check out of boundary
             let [nextX, nextY] = this.xyFromIndex(nextIndex);
             if (Math.abs(nextX - prevX) > 1 || Math.abs(nextY - prevY) > 1) {
@@ -336,17 +360,27 @@ export class BoardComponent implements OnInit {
             [prevX, prevY] = [nextX, nextY];
 
             switch (this.cells[nextIndex].state) {
+                // Fail
                 case CellState.Empty:
                     // console.log('end by empty');
                     return [];
 
+                // same color -> END
                 case turnState:
+                    // if turnState is W
+                    // CASE1: W -> B ... -> W
+                    // CASE2: W -> W
                     // console.log('bingo ??');
-                    return reversableIndexes;
+                    return reversableDisks;
 
+                // opposite color -> candidate
                 default:
                     // console.log('keep going');
-                    reversableIndexes.push(nextIndex);
+                    reversableDisks.push({
+                        cellIndex: nextIndex,
+                        distance: distance,
+                        direction: direction
+                    });
             }
         }
 
@@ -354,21 +388,24 @@ export class BoardComponent implements OnInit {
         return [];
     }
 
-    private reverableDisksForAllDirection(cellIndex: number, turnState: TurnState): number[] {
+    private reversableDisksForAllDirection(cellIndex: number, turnState: TurnState): ReversableDisk[] {
         let directions:Direction[] = [Direction.NW, Direction.N , Direction.NE, Direction.W, Direction.E, Direction.SW, Direction.S, Direction.SE];
 
-        let reversableIndexes = directions.reduce((prev, current) => {
-            return prev.concat(this.reversableDisksForOneDirection(current, cellIndex, turnState));
+        let reversableDisks = directions.reduce((prev, direction) => {
+            return prev.concat(this.reversableDisksForOneDirection(direction, cellIndex, turnState));
         }, []);
 
         // console.log(`numReverableDisk = ${numReversableDisk}`);
 
-        return reversableIndexes;
+        return reversableDisks;
     }
 
     private reverse(cellIndex: number, turnState: TurnState) {
-        this.reverableDisksForAllDirection(cellIndex, turnState).forEach(turnIndex => {
-            this.setCellStateForIndex(turnIndex, turnState);
+        this.reversableDisksForAllDirection(cellIndex, turnState).forEach(reversableDisk => {
+            this.setCellStateForIndex(reversableDisk.cellIndex, turnState);
+
+            // for animate
+            this.setAnimationForIndex(reversableDisk.cellIndex, turnState, reversableDisk.direction, reversableDisk.distance);  
         });
     }
 
@@ -376,7 +413,7 @@ export class BoardComponent implements OnInit {
         let puttableIndexes:[number, number][] = [];
 
         for(let cellIndex = 0; cellIndex < CellSize; cellIndex++) {
-            let numReverableDisks = this.reverableDisksForAllDirection(cellIndex, turnState).length;
+            let numReverableDisks = this.reversableDisksForAllDirection(cellIndex, turnState).length;
 
             if (numReverableDisks > 0) {
                 puttableIndexes.push([cellIndex, numReverableDisks]);

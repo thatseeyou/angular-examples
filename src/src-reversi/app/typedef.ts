@@ -1,14 +1,14 @@
 export class Board {
-  name: string;
-  white: boolean | string;
-  black: boolean | string;
-  $key?: string;
-  $value?: null;
+    name: string;
+    white: boolean | string;
+    black: boolean | string;
+    $key?: string;
+    $value?: null;
 }
 
 export class Command {
-  name: "newGame" | "changeName" | "changeBlackName" | "changeWhiteName";
-  data?: any;
+    name: "newGame" | "changeName" | "changeBlackName" | "changeWhiteName";
+    data?: any;
 }
 
 export class Score {
@@ -17,15 +17,15 @@ export class Score {
 }
 
 export class GameHistoryItem {
-  turn: number;
-  idx: number;
-  $key?: string;
+    turn: number;
+    idx: number;
+    $key?: string;
 }
 
 export interface GameHistory {
-  [index:number]: GameHistoryItem;
-  $value?: null;
-  length?: number;
+    [index: number]: GameHistoryItem;
+    $value?: null;
+    length?: number;
 }
 
 export const enum CellState {
@@ -45,5 +45,25 @@ export class Cell {
         blackPuttable: boolean;
         whitePuttable: boolean;
     }
+    turnAnimationName: string;
+    turnAnimationDelay: string;
     numReversable: number;
 }
+
+export const enum Direction {
+    NW = -9,
+    N = -8,
+    NE = -7,
+    W = -1,
+    NO = 0,
+    E = 1,
+    SW = 7,
+    S = 8,
+    SE = 9
+}
+
+export interface ReversableDisk {
+    cellIndex: number;
+    direction: Direction;
+    distance: number; /* used for animation delay */
+} 
