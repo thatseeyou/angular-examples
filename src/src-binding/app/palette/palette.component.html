@@ -1,0 +1,8 @@
+<div class="color" [style.backgroundColor]="backgroundColor"></div>
+<div class="flex-container">
+    <div *ngFor="let i of [0,1,2]">
+        <div><widget-display [value]="channels[i]"></widget-display></div>
+        <div><widget-slider min="0" max="255" [value]="channels[i]" (valueChange)="onColorChange(i, $event)"></widget-slider></div>
+        <div><widget-stepper [value]="channels[i]" (valueChange)="onColorChange(i, $event)"></widget-stepper></div>
+    </div>
+</div>

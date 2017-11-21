@@ -1,0 +1,13 @@
+div.color {
+    height: 100px;
+    background-color: rgb(128, 128, 128);
+}
+div.flex-container {
+    flex-flow: row nowrap;
+}
+
+div.flex-container > div {
+    display: inline-block;
+    width: 250px;
+    flex: 1;
+}

@@ -1,0 +1,25 @@
+:host {
+    display: inline-block;
+    position: relative;
+    width: 200px;
+    height: 16px;
+}
+.slider-track {
+    position: absolute;
+    top: 6px;
+    width: 192px;
+    height: 4px;
+    background-color: gray;
+    border-radius: 2px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+.slider-thumb {
+    position: absolute;
+    /* left: 50px; */
+    top: 0px;
+    width:16px;
+    height:16px;
+    border-radius: 8px;
+    background-color: red;
+}

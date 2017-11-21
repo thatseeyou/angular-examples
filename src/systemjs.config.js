@@ -24,6 +24,14 @@ System.config({
         }
       }
     },
+    "src-binding/app": {
+      "defaultExtension": "js",
+      "meta": {
+        "./*.js": {
+          "loader": "systemjs-angular-loader.js"
+        }
+      }
+    },
     "src-top10/app": {
       "defaultExtension": "js",
       "meta": {
