@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
     styleUrls: ['./display.component.css']
 })
 export class DisplayComponent implements OnInit {
-    @Input() value:number = 0
+    @Input() value:string = '0'
 
     constructor() { }
 

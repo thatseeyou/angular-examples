@@ -7,12 +7,23 @@ import { Component, OnInit, AfterViewInit, ElementRef, HostBinding, HostListener
 })
 
 export class SliderComponent implements OnInit, AfterViewInit {
-    @Input('min') minValue:number = 0
-    @Input('max') maxValue:number = 100
-    @Input() set value(newValue:number) {
-        newValue = newValue < this.minValue ? this.minValue : (newValue > this.maxValue ? this.maxValue : newValue);
-        console.log(`Input: newValue = ${newValue}`)
-        this.moveThumbByValue(newValue);
+    minValue:number = 0;
+    maxValue:number = 100;
+
+    // IMPORTANT : Input type is string not number
+    @Input('min') set _minValue(newValue:string) {
+        this.minValue = parseInt(newValue, 10)
+    }
+    @Input('max') set _maxValue(newValue:string) {
+        this.maxValue = parseInt(newValue, 10)
+    }
+    @Input('value') set _value(newValue:string) {
+        let value = parseInt(newValue, 10);
+        if (this.prevValue == value) {
+            return;
+        }
+        console.log(`Input: newValue = ${value}`)
+        this.moveThumbByValue(value);
     } 
     @Output() valueChange = new EventEmitter<number>();
 
@@ -75,10 +86,8 @@ export class SliderComponent implements OnInit, AfterViewInit {
 
     moveThumbByEvent(event:MouseEvent) {
         let pos = event.clientX < this.minX ? this.minX : (event.clientX > this.maxX ? this.maxX : event.clientX);
-        // console.log(`pos = ${pos}`);
-        let value = Math.round((pos - this.minX) / (this.maxX - this.minX) * (this.maxValue - this.minValue) + this.minValue);
-        value = value < this.minValue ? this.minValue : (value > this.maxValue ? this.maxValue : value);
-        // console.log(`value = ${value}`);
+        let value = (pos - this.minX) / (this.maxX - this.minX) * (this.maxValue - this.minValue) + this.minValue;
+        value = Math.round((pos - this.minX) / (this.maxX - this.minX) * (this.maxValue - this.minValue) + this.minValue);
 
         if (this.prevValue != value) {
             this.moveThumbByValue(value);

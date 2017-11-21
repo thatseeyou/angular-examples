@@ -7,7 +7,10 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 
 export class StepperComponent implements OnInit {
-    @Input() value:number = 0;
+    value:number = 0
+    @Input('value') set _value(newValue:string) {
+        this.value = parseInt(newValue, 10);
+    }
     @Output() valueChange = new EventEmitter<number>();
 
     constructor() { }
