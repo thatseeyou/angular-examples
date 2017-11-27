@@ -51,6 +51,9 @@ export class SliderComponent implements OnInit, AfterViewInit {
         // this.clientWidth = width;
         this.minX = clientX + 4;
         this.maxX = clientX + width - 4;
+
+        // initial view update because property binding is occured before ngOnInit()
+        this.moveThumbByValue(this.prevValue);
     }
 
     @HostListener('click', ['$event'])
