@@ -448,20 +448,19 @@ export class BoardComponent implements OnInit {
     }
 
     private updateScore() {
-        let white = 0;
-        let black = 0;
-
-        for(let cellIndex = 0; cellIndex < CellSize; cellIndex++) {
-            if (this.cells[cellIndex].state == CellState.Black) {
-                black++;
+        let score = this.cells.reduce((acc, value) => {
+            if (value.state == CellState.Black) {
+                acc.black++;
             }
-            else if (this.cells[cellIndex].state == CellState.White) {
-                white++;
+            else if (value.state == CellState.White) {
+                acc.white++;
             }
-        }
 
-        this.score.black = black;
-        this.score.white = white;
+            return acc
+        }, { white: 0, black: 0})
+
+        this.score.black = score.black;
+        this.score.white = score.white;
 
         this.scoreChanged.emit(this.score);
     }
