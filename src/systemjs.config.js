@@ -24,6 +24,14 @@ System.config({
         }
       }
     },
+    "src-dom-manipulation/app": {
+      "defaultExtension": "js",
+      "meta": {
+        "./*.js": {
+          "loader": "systemjs-angular-loader.js"
+        }
+      }
+    },
     "src-binding/app": {
       "defaultExtension": "js",
       "meta": {

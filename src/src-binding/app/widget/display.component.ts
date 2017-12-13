@@ -11,7 +11,6 @@ export class DisplayComponent implements OnInit, OnChanges {
     constructor() { 
         console.log('********* constructor')
         console.log(`value = ${this.value}`)
-
     }
 
     ngOnInit() { }

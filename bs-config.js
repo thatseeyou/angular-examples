@@ -27,6 +27,7 @@ module.exports = {
           { from: /\/toh-firebase.*/, to: '/toh-firebase.html' },
           { from: /\/toh.*/, to: '/toh.html' },
           { from: /\/binding.*/, to: '/binding.html' },
+          { from: /\/dom-manipulation.*/, to: '/dom-manipulation.html' },
           { from: /\/top10.*/, to: '/top10.html' },
           { from: /\/template-syntax.*/, to: '/template-syntax.html' },
           { from: /\/router.*/, to: '/router.html' },
