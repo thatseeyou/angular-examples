@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ElementRef, HostBinding, HostListener, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ElementRef, HostBinding, HostListener, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'widget-slider',
@@ -6,7 +6,7 @@ import { Component, OnInit, AfterViewInit, ElementRef, HostBinding, HostListener
     styleUrls: ['./slider.component.css']
 })
 
-export class SliderComponent implements OnInit, AfterViewInit {
+export class SliderComponent implements OnInit {
     minValue:number = 0;
     maxValue:number = 100;
 
@@ -17,7 +17,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
     @Input('max') set _maxValue(newValue:string) {
         this.maxValue = parseInt(newValue, 10)
     }
-    @Input('value') set _value(newValue:string) {
+    @Input('value') set _value(newValue:string){
         let value = parseInt(newValue, 10);
         if (this.prevValue == value) {
             return;
@@ -37,12 +37,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
 
     ngOnInit() { 
         console.log(`ngOnInit()`);
-        // let width = this.hostElement.nativeElement.clientWidth;
-        // console.log(`clientWidth = ${width}`)
-    }
 
-    ngAfterViewInit() {
-        console.log(`ngAfterViewInit()`);
         let width = this.hostElement.nativeElement.clientWidth;
         // let clientX = this.hostElement.nativeElement.clientLeft;
         let clientX = this.hostElement.nativeElement.getClientRects()[0].x;

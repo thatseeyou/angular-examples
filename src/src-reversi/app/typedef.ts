@@ -24,7 +24,7 @@ export class GameHistoryItem {
 
 export interface GameHistory {
     [index: number]: GameHistoryItem;
-    $value?: null;
+    // $value?: null;
     length?: number;
 }
 

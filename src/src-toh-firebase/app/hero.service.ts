@@ -1,6 +1,6 @@
 import { Injectable }    from '@angular/core';
 import { Observable }    from 'rxjs/Observable';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList, AngularFireAction } from 'angularfire2/database';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/do';
@@ -12,19 +12,22 @@ export class HeroService {
   constructor(private db: AngularFireDatabase) { }
 
   getHeroes() {
-    return this.db.list('/heroes').do(value => console.dir(value)) as FirebaseListObservable<Hero[]>;
-    // return this.db.list('/heroes');
+    // return this.db.list<Hero>('/heroes').valueChanges().do(value => console.dir(value));
+    return this.db.list<Hero>('/heroes').snapshotChanges().map(changes => {
+      console.log(changes);
+      let x = changes.map(c => ({ "$key": c.payload.key, ...c.payload.val() }));
+      console.log(x);
+      return x;
+    })
   }
 
   // getHero(id: number): Observable<Hero> {
   getHero(id: number) {
-    return this.db.list('/heroes', { 
-        query: { 
-          orderByChild: 'id', 
-          equalTo: id 
-        } 
-      }
-    )
+    return this.db.list<Hero>('/heroes', ref =>
+      ref.orderByChild('id').equalTo(id)
+    ).snapshotChanges().map(changes => {
+      return changes.map(c => ({ "$key": c.payload.key, ...c.payload.val() }));
+    })
     .map(heroes => heroes[0]);
   }
 
@@ -41,7 +44,10 @@ export class HeroService {
 
   update(hero: Hero) {
     /* $key is ignored */
-    return this.db.list('/heroes').update(hero.$key, hero);
+    return this.db.list('/heroes').update(hero.$key, {
+      id: hero.id,
+      name: hero.name
+    });
   }
 
   resetDB() {

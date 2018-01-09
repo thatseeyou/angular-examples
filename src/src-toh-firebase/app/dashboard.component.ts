@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-// import { FirebaseListObservable } from 'angularfire2/database';
-
 import { Hero }        from './hero';
 import { HeroService } from './hero.service';
 

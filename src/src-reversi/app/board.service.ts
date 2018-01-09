@@ -4,7 +4,7 @@ import { Observable }      from 'rxjs/Observable';
 import { Subject }         from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 import { Board, GameHistory, GameHistoryItem } from './typedef';
 
@@ -19,12 +19,10 @@ export class BoardService {
         let subject = new Subject<Board>();
 
         // PART 1. find board ID
-        let listSubscription = this.db.list(BoardRoot, {
-            query: {
-                orderByChild: 'name',
-                equalTo: boardName 
-            }
-        })
+        let listSubscription = this.db.list<Board>(BoardRoot, 
+            ref => ref.orderByChild('name').equalTo(boardName)).snapshotChanges().map(changes => {
+                return changes.map(c => ({ "$key": c.payload.key, ...c.payload.val() }));
+            })
         .subscribe((boards:Board[]) => {
             let board:Board;
 
@@ -47,15 +45,18 @@ export class BoardService {
                 console.log(`board ${boardName} connected :`);
 
                 let board = boards[0];
-                // console.dir(board);
+                console.dir(board);
 
                 listSubscription.unsubscribe();
 
                 // PART 2. monitoring board ID
-                let objectSubscription = this.db.object(BoardRoot + '/' + board.$key)
+                let objectSubscription = this.db.object(BoardRoot + '/' + board.$key).snapshotChanges().map(c => {
+                    return { "$key": c.payload.key, ...c.payload.val() };
+                })
                 .subscribe((board:Board) => {
                     console.log(`board ${boardName} received or changed :`);
-                    // console.dir(board);
+                    console.dir(board);
+                    // TODO: $value does not exist in v5
                     if (board.$value === null) {
                         console.log(`board ${boardName} removed`);
                         objectSubscription.unsubscribe();
@@ -71,7 +72,10 @@ export class BoardService {
     connectHistory(boardID:string):Subject<GameHistory> {
         let subject = new Subject<GameHistory>();
 
-        this.db.object(HistoryRoot + '/' + boardID)
+        // this.db.object(HistoryRoot + '/' + boardID).snapshotChanges().map(c => {
+        //     return { "$key": c.payload.key, ...c.payload.val() };
+        // })
+        this.db.object(HistoryRoot + '/' + boardID).valueChanges()
         .subscribe((history:GameHistory) => {
             subject.next(history);
         });
@@ -81,6 +85,8 @@ export class BoardService {
 
     addHistory(boardID:string, historyOrder:number, history:GameHistoryItem) {
         console.log(`historyOrder = ${historyOrder}`);
+        console.log(`boardID = ${boardID}`);
+        console.log(history);
         const historyRef = this.db.object(HistoryRoot + '/' + boardID + '/' + historyOrder);
 
         return historyRef.set(history);

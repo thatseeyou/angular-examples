@@ -11,6 +11,6 @@ export class GroupListGuard implements CanActivateChild {
 
     canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
         console.log(`> GroupListGuard::canActivateChild`);
-        return Observable.of(false).delay(5000);
+        return Observable.of(true).delay(1000);
     }
 }

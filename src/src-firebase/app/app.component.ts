@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,9 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 })
 export class AppComponent {
   title = 'List of heroes';
-  items: FirebaseListObservable<any[]>;
+  items: Observable<any[]>;
 
   constructor(db: AngularFireDatabase) {
-    this.items = db.list('/heroes');
+    this.items = db.list('/heroes').valueChanges();
   }
 }

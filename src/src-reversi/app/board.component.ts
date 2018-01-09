@@ -133,6 +133,7 @@ export class BoardComponent implements OnInit {
                 // 1. initial connect
                 if (this.currentBoard.name == null) {
                     console.log(`initialize currentBoard`);
+                    console.log(board);
                     this.currentBoard = board;
 
                     this.observeHistory(board.$key);
@@ -167,21 +168,21 @@ export class BoardComponent implements OnInit {
     }
 
     private observeHistory(boardID:string) {
+        console.log(`start observing history of ${boardID}`);
         if (this.historySubscription) {
             this.historySubscription.unsubscribe();
         }
 
         this.currentHistory = {
-            $value: null,
+            // $value: null,
             length: 0
         };
 
         this.historySubscription = this.boardService.connectHistory(boardID)
         .subscribe((history:GameHistory) => {
-            // console.dir(history);
-            if (history.$value === null) {
-                history.length = 0;
-                if (this.currentHistory.$value === null) {
+            console.dir(history);
+            if (history === null) {
+                if (this.currentHistory.length == 0) {
                     console.log(`initial history received`);
                     // initial value received
                 }
@@ -191,7 +192,9 @@ export class BoardComponent implements OnInit {
                     this.initGame();
                     this.myTurn = myTurn;
                 }
-                this.currentHistory = history;
+                this.currentHistory = {
+                    length: 0
+                }
             }
             else {
                 let oldHistoryCount = this.currentHistory.length;
